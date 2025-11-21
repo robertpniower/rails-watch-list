@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="card m-auto shadow-sm" style="width: 48rem;">
+    <div class="card-body">
+      <div class="row mb-2">
+        <h2 class="card-title">
+        Add a new Movie
+        </h2>
+      </div>
+
+        <%= simple_form_for [@list, @bookmark] do |f| %>
+          <%= f.input :comment %>
+          <%= f.association :movie %>
+          <%= f.submit class: "btn btn-primary" %>
+        <% end %>
+
+    </div>
+  </div>
+
+</div>
