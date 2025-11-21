@@ -100,6 +100,10 @@ GEM
       irb (~> 1.10)
       reline (>= 0.3.8)
     diff-lcs (1.6.2)
+    dotenv (3.1.8)
+    dotenv-rails (3.1.8)
+      dotenv (= 3.1.8)
+      railties (>= 6.1)
     drb (2.2.3)
     erb (6.0.0)
     erubi (1.13.1)
@@ -317,6 +321,7 @@ DEPENDENCIES
   bootsnap
   bootstrap (~> 5.3)
   debug
+  dotenv-rails
   faker
   font-awesome-sass (~> 6.1)
   importmap-rails
