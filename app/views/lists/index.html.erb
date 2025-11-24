@@ -1,26 +1,36 @@
-
-
 <div class="w-100 text-center">
   <div class="row d-flex align-items-center mb-5 pt-5 logo">
     <div class="mt-5 p-3 logo-text">
       <h1>Add Movies to your lists</h1>
     </div>
-
   </div>
   <div class="container">
-    <div class="container d-flex justify-content-between p-3 mb-3">
+    <div class="container d-flex justify-content-between p-3 mb-5">
       <h3>My Lists</h3>
       <%= link_to 'Create a Movie List', new_list_path, class: "btn btn-primary" %>
     </div>
     <ul class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 list-unstyled">
       <% @lists.each do |list| %>
-      <%= link_to list_path(list.id), class: "text-decoration-none text-dark" do %>
-          <div class="card p-3" style>
-            <div class="col card-title">
-              <p><%= list.name %></p>
+        <li class="col">
+          <%= link_to list_path(list.id), class: "text-decoration-none text-dark d-block h-100" do %>
+            <% if list.photo.attached? %>
+              <%
+                cloudinary_path = cl_image_path(list.photo.key, height: 300, crop: :fill)
+                background_styles = "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('#{cloudinary_path}'); background-size: cover; background-position: center; background-repeat: no-repeat;"
+              %>
+            <% else %>
+              <%
+                background_styles = "background-color: #555;"
+              %>
+            <% end %>
+
+            <div class="card p-3" style="<%= background_styles %>">
+              <div class="col card-title">
+                <p><%= list.name %></p>
+              </div>
             </div>
-          </div>
-        <% end  %>
+          <% end %>
+        </li>
       <% end %>
     </ul>
   </div>
